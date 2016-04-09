@@ -1,2 +1,2 @@
-# TechBubble-Iot-JumpWay-Python
-TechBubble IoT JumpWay Python Libraries
+# TechBubble-Iot-JumpWay-Python-MQTT
+TechBubble IoT JumpWay Python MQTT Libraries
