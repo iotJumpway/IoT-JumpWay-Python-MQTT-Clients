@@ -32,6 +32,7 @@ def customDeviceWarningsCallback(topic,payload):
 	print("Received warning data: %s" % (payload))
 	
 locationName = "YourTechBubbleJumpWayLocationName"
+locationID = "YourTechBubbleJumpWayLocationID"
 zoneID = "YourTechBubbleJumpWayZoneID"
 deviceId = "YourTechBubbleJumpWayDeviceID"
 deviceName = "YourTechBubbleJumpWayDeviceName"
@@ -39,7 +40,7 @@ username = "YourTechBubbleJumpWayMQTTUsername"
 password = "YourTechBubbleJumpWayMQTTPassword"
 
 try:
-	applicationOptions = {"locationName": locationName, "applicationID": applicationID, "applicationName": applicationName, "username": username, "password": password}
+	applicationOptions = {"locationName": locationName, "locationID": locationID, "applicationID": applicationID, "applicationName": applicationName, "username": username, "password": password}
 	JumpWayPythonMQTTApplicationConnection = techbubbleiotjumpwaymqtt.application.JumpWayPythonMQTTApplicationConnection(applicationOptions)
 except Exception as e:
 	print(str(e))
