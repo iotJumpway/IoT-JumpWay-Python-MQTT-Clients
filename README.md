@@ -18,3 +18,7 @@ Installation
 Install the latest version of the library with pip
 
     [root@localhost ~]# pip install techbubbleiotjumpwaymqtt
+
+Upgrade to the latest version of the library with pip
+
+    [root@localhost ~]# pip install techbubbleiotjumpwaymqtt --upgrade
