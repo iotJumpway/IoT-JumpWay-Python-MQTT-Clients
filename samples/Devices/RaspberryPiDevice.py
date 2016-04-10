@@ -39,9 +39,9 @@ def customSensorCallback(topic,payload):
 def customDeviceCommandsCallback(topic,payload):
 	print("Received command data: %s" % (payload))
 	jsonData = json.loads(payload)
-	if jsonData['ActuatorID']==1 and jsonData['Command']=='ON':
+	if jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='ON':
 		GPIO.output(actuator1Pin,GPIO.HIGH)
-	elif jsonData['ActuatorID']==1 and jsonData['Command']=='OFF':
+	elif jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='OFF':
 		GPIO.output(actuator1Pin,GPIO.LOW)
 
 try:

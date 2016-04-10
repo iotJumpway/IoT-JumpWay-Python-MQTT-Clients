@@ -58,8 +58,8 @@ JumpWayPythonMQTTApplicationConnection.connectToApplication()
 #JumpWayPythonMQTTApplicationConnection.deviceWarningsCallback = customDeviceWarningsCallback
 
 while True:
-	JumpWayPythonMQTTApplicationConnection.publishToDeviceCommands(1,1,{"Actuator":"LED","ActuatorID":1,"Command":"ON"})
+	JumpWayPythonMQTTApplicationConnection.publishToDeviceCommands(1,1,{"Actuator":"LED","ActuatorID":1,"Command":"TOGGLE","CommandValue":"ON"})
 	time.sleep(10)
-	JumpWayPythonMQTTApplicationConnection.publishToDeviceCommands(1,1,{"Actuator":"LED","ActuatorID":1,"Command":"OFF"})
+	JumpWayPythonMQTTApplicationConnection.publishToDeviceCommands(1,1,{"Actuator":"LED","ActuatorID":1,"Command":"TOGGLE","CommandValue":"OFF"})
 	time.sleep(10)
 JumpWayPythonMQTTApplicationConnection.disconnectFromApplication()
