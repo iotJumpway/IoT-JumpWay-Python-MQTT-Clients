@@ -19,7 +19,6 @@ import techbubbleiotjumpwaymqtt.device
 
 actuator1Pin = 5
 	
-locationName = "YourTechBubbleJumpWayLocationName"
 locationID = "YourTechBubbleJumpWayLocationID"
 zoneID = "YourTechBubbleJumpWayZoneID"
 deviceId = "YourTechBubbleJumpWayDeviceID"
@@ -46,7 +45,7 @@ def customDeviceCommandsCallback(topic,payload):
 		actuator1Pin.write(0)
 
 try:
-	deviceOptions = {"locationName": locationName, "locationID": locationID, "zoneID": zoneID, "deviceId": deviceId, "deviceName": deviceName, "username": username, "password": password}
+	deviceOptions = {"locationID": locationID, "zoneID": zoneID, "deviceId": deviceId, "deviceName": deviceName, "username": username, "password": password}
 	JumpWayPythonMQTTDeviceConnection = techbubbleiotjumpwaymqtt.device.JumpWayPythonMQTTDeviceConnection(deviceOptions)
 except Exception as e:
 	print(str(e))

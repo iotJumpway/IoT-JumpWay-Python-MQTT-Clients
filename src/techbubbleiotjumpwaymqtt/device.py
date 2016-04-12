@@ -1,5 +1,5 @@
 # *****************************************************************************
-# Copyright (c) 2015 TechBubble Technologies and other Contributors.
+# Copyright (c) 2016 TechBubble Technologies and other Contributors.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -29,9 +29,7 @@ class JumpWayPythonMQTTDeviceConnection():
 		self.deviceStatusCallback = None	
 		self.deviceSensorCallback = None
 		self.deviceCommandsCallback = None
-		if self._configs['locationName'] == None:
-			raise ConfigurationException("locationName property is required")
-		elif self._configs['locationID'] == None:
+		if self._configs['locationID'] == None:
 			raise ConfigurationException("locationID property is required")
 		if self._configs['zoneID'] == None:
 			raise ConfigurationException("zoneID property is required")
@@ -47,7 +45,7 @@ class JumpWayPythonMQTTDeviceConnection():
 	
 	def connectToDevice(self):
 		self.mqttClient = mqtt.Client(client_id=self._configs['deviceName'], clean_session=True)
-		deviceStatusTopic = '%s/%s/Devices/%s/%s/Status' % (self._configs['locationName'], self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+		deviceStatusTopic = '%s/Devices/%s/%s/Status' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 		self.mqttClient.will_set(deviceStatusTopic, "OFFLINE", 0, False)
 		self.mqttClient.tls_set(self.mqttTLS, certfile=None, keyfile=None)
 		self.mqttClient.on_connect = self.on_connect
@@ -63,11 +61,8 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("rc: "+str(rc))
 	
 	def subscribeToDeviceStatus(self, qos=0):
-		if self._configs['locationName'] == None:
-			print("locationName is required!")
-			return False
-		elif self._configs['locationID'] == None:
-			print("locationName is required!")
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
 			return False
 		elif self._configs['zoneID'] == None:
 			print("zoneID is required!")
@@ -76,16 +71,14 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("deviceId is required!")
 			return False
 		else:
-			deviceStatusTopic = '%s/%s/Devices/%s/%s/Status' % (self._configs['locationName'], self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			deviceStatusTopic = '%s/Devices/%s/%s/Status' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 			self.mqttClient.subscribe(deviceStatusTopic, qos=qos)
 			print("Subscribed to Device Status "+deviceStatusTopic)
 			return True
 	
 	def subscribeToDeviceCommands(self, qos=0):
-		if self._configs['locationName'] == None:
-			print("locationName is required!")
-		elif self._configs['locationID'] == None:
-			print("locationName is required!")
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
 			return False
 		elif self._configs['zoneID'] == None:
 			print("zoneID is required!")
@@ -94,16 +87,14 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("deviceId is required!")
 			return False
 		else:
-			deviceCommandsTopic = '%s/%s/Devices/%s/%s/Commands' % (self._configs['locationName'], self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			deviceCommandsTopic = '%s/Devices/%s/%s/Commands' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 			self.mqttClient.subscribe(deviceCommandsTopic, qos=qos)
 			print("Subscribed to Device Commands "+deviceCommandsTopic)
 			return True
 	
 	def subscribeToDeviceSensors(self, qos=0):
-		if self._configs['locationName'] == None:
-			print("locationName is required!")
-		elif self._configs['locationID'] == None:
-			print("locationName is required!")
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
 			return False
 			return False
 		elif self._configs['zoneID'] == None:
@@ -113,7 +104,7 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("deviceId is required!")
 			return False
 		else:
-			deviceDataTopic = '%s/%s/Devices/%s/%s/Sensors' % (self._configs['locationName'], self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			deviceDataTopic = '%s/Devices/%s/%s/Sensors' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 			self.mqttClient.subscribe(deviceDataTopic, qos=qos)
 			print("Subscribed to Device Sensors "+deviceDataTopic)
 			return True
@@ -123,28 +114,25 @@ class JumpWayPythonMQTTDeviceConnection():
 
 	def on_message(self, client, obj, msg):
 		splitTopic=msg.topic.split("/")
-		if splitTopic[5]=='Status':
+		if splitTopic[4]=='Status':
 			if self.deviceStatusCallback == None:
 				print("No deviceStatusCallback set")
 			else:
 				self.deviceStatusCallback(msg.topic,msg.payload)
-		elif splitTopic[5]=='Sensors':
+		elif splitTopic[4]=='Sensors':
 			if self.deviceSensorCallback == None:
 				print("No deviceSensorCallback set")
 			else:
 				self.deviceSensorCallback(msg.topic,msg.payload)
-		elif splitTopic[5]=='Commands':
+		elif splitTopic[4]=='Commands':
 			if self.deviceCommandsCallback == None:
 				print("No deviceCommandsCallback set")
 			else:
 				self.deviceCommandsCallback(msg.topic,msg.payload)
 	
 	def publishToDeviceStatus(self, data):
-		if self._configs['locationName'] == None:
-			print("locationName is required!")
-			return False
-		elif self._configs['locationID'] == None:
-			print("locationName is required!")
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
 			return False
 		elif self._configs['zoneID'] == None:
 			print("zoneID is required!")
@@ -153,16 +141,13 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("deviceId is required!")
 			return False
 		else:
-			deviceStatusTopic = '%s/%s/Devices/%s/%s/Status' % (self._configs['locationName'], self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			deviceStatusTopic = '%s/Devices/%s/%s/Status' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 			self.mqttClient.publish(deviceStatusTopic,data)
 			print("Published to Device Status "+deviceStatusTopic)
 	
 	def publishToDeviceCommands(self, data):
-		if self._configs['locationName'] == None:
-			print("locationName is required!")
-			return False
-		elif self._configs['locationID'] == None:
-			print("locationName is required!")
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
 			return False
 		elif self._configs['zoneID'] == None:
 			print("zoneID is required!")
@@ -171,16 +156,13 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("deviceId is required!")
 			return False
 		else:
-			deviceCommandsTopic = '%s/%s/Devices/%s/%s/Commands' % (self._configs['locationName'], self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			deviceCommandsTopic = '%s/Devices/%s/%s/Commands' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 			self.mqttClient.publish(deviceCommandsTopic,json.dumps(data))
 			print("Published to Device Commands "+deviceCommandsTopic)
 	
 	def publishToDeviceSensors(self, data):
-		if self._configs['locationName'] == None:
-			print("locationName is required!")
-			return False
-		elif self._configs['locationID'] == None:
-			print("locationName is required!")
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
 			return False
 		elif self._configs['zoneID'] == None:
 			print("zoneID is required!")
@@ -189,16 +171,13 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("deviceId is required!")
 			return False
 		else:
-			deviceSensorsTopic = '%s/%s/Devices/%s/%s/Sensors' % (self._configs['locationName'], self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			deviceSensorsTopic = '%s/Devices/%s/%s/Sensors' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 			self.mqttClient.publish(deviceSensorsTopic,json.dumps(data))
 			print("Published to Device Sensors "+deviceSensorsTopic)
 	
 	def publishToDeviceWarnings(self, data):
-		if self._configs['locationName'] == None:
-			print("locationName is required!")
-			return False
-		elif self._configs['locationID'] == None:
-			print("locationName is required!")
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
 			return False
 		elif self._configs['zoneID'] == None:
 			print("zoneID is required!")
@@ -207,7 +186,7 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("deviceId is required!")
 			return False
 		else:
-			deviceSensorsTopic = '%s/%s/Devices/%s/%s/Warnings' % (self._configs['locationName'], self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			deviceSensorsTopic = '%s/Devices/%s/%s/Warnings' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 			self.mqttClient.publish(deviceSensorsTopic,json.dumps(data))
 			print("Published to Device Warnings "+deviceSensorsTopic)
 
