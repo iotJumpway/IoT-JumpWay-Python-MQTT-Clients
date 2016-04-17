@@ -1,18 +1,21 @@
 TechBubble IoT JumpWay Python MQTT Library
 ============================================
 
-Python MQTT library that allows developers to communicate with the TechBubble IoT JumpWay MQTT Broker
-Platform <https://iot.techbubbletechnologies.com>.
+Python MQTT library that allows developers to communicate with the TechBubble IoT JumpWay MQTT Broker.
 
--  Python 2.7 <https://www.python.org/downloads/release/python-2710/>
+Platform <https://iot.techbubbletechnologies.com>.
 
 Library Dependencies
 -------------------
 
+-  Python 2.7 <https://www.python.org/downloads/release/python-2710/>
+-  
 -  paho-mqtt <https://pypi.python.org/pypi/paho-mqtt>
 
 Library Installation
 ---------------------
+
+In all cases whether using devices or applications you first need to install the library. 
 
 - Install the latest version of the library with pip
 
@@ -24,6 +27,8 @@ Library Installation
 
 Raspberry Pi
 ------------
+
+Make sure your firmware and software etc is up to date.
 
 - Update firmware
 
