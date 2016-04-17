@@ -9,6 +9,7 @@
 # Contributors:
 #   Adam Milton-Barker  - Initial Contribution
 #   Adam Mosely  - Tester
+#   John Ducrest  - Tester
 # *****************************************************************************
 
 import time
