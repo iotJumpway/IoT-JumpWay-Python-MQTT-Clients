@@ -59,7 +59,7 @@ Raspberry Pi Application
 
     https://github.com/AdamMiltonBarker/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Applications/RaspberryPiApplication.py
 
-- Run RaspberryPiDevice.py
+- Run RaspberryPiApplication.py
 
     [root@localhost ~]# sudo python RaspberryPiApplication.py
 
