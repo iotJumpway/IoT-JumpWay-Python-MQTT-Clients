@@ -36,7 +36,9 @@ Raspberry Pi
 - Update software
 
     [root@localhost ~]# sudo apt-get update
+    
     [root@localhost ~]# sudo apt-get upgrade
+    
     [root@localhost ~]# sudo apt-get dist-upgrade
 
 Raspberry Pi Device 
