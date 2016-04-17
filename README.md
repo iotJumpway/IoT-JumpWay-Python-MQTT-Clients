@@ -9,7 +9,6 @@ Library Dependencies
 -------------------
 
 -  Python 2.7 <https://www.python.org/downloads/release/python-2710/>
--  
 -  paho-mqtt <https://pypi.python.org/pypi/paho-mqtt>
 
 Library Installation
