@@ -125,32 +125,18 @@ def customDeviceWarningsCallback(topic,payload):
 ###Message Publish Functions
 --------------------------------
 
-At this moment there are 4 publish functions in place and you can choose which ones to use.
+At this moment there are 2 publish functions in place and you can choose which ones to use.
 
 #### Status Publish
 
 ```
-JumpWayPythonMQTTDeviceConnection.publishToDeviceStatus("ONLINE")
+JumpWayPythonMQTTApplicationConnection.publishToApplicationStatus("ONLINE")
 ```
-This is a publish command that can send device status notifications to all applications that are subscribed to the device status topic for a particular device. 
+This is a publish command that can send application status notifications to all applications that are subscribed to the application status topic. 
 
-#### Sensor Publish
-
-```
-JumpWayPythonMQTTDeviceConnection.publishToDeviceSensors({"Sensor":"Temperature","SensorID":1,"SensorValue":"25.00"})
-```
-This is a publish command that can send device sensor data to all applications that are subscribed to the device sensor topic for a particular device. 
-
-#### Actuator Publish
+#### Device Command Publish
 
 ```
-JumpWayPythonMQTTDeviceConnection.publishToDeviceActuators({"Actuator":"LED","ActuatorID":1,"ActuatorValue":"ON"})
+JumpWayPythonMQTTApplicationConnection.publishToDeviceCommands(ZoneID,DeviceID,{"Actuator":"LED","ActuatorID":1,"Command":"TOGGLE","CommandValue":"ON"})
 ```
-This is a publish command that can send device actuator data to all applications that are subscribed to the device actuator topic for a particular device. 
-
-#### Warning Publish
-
-```
-JumpWayPythonMQTTDeviceConnection.publishToDeviceWarnings({"WarningType":"Threshold","WarningOrigin":"Temperature","WarningValue":"150","WarningMessage":"Device temperature has passed threshold"})
-```
-This is a publish command that can send device warning statuses to all applications that are subscribed to the device warning topic for a particular device. 
+This is a publish command that can send device commands to a particular device. 
