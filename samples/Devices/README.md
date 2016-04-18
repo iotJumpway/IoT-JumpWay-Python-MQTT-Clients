@@ -55,9 +55,11 @@ At this moment there are 3 callback functions in place, you can choose which one
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceStatus()
 JumpWayPythonMQTTDeviceConnection.deviceStatusCallback = customStatusCallback
 
+```
 This is a callback that is triggered when your device receives a status update, IE: online, offline. 
 You can edit what this call back does by editing this section:
 
+```
 def customStatusCallback(topic,payload):
 	print("Received status data: %s" % (payload))
 ```
@@ -66,9 +68,11 @@ def customStatusCallback(topic,payload):
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceSensors()
 JumpWayPythonMQTTDeviceConnection.deviceSensorCallback = customSensorCallback
 
+```
 This is a callback that is triggered when your device receives a sensor update, IE: temperature readings etc. 
 You can edit what this call back does by editing this section:
 
+```
 def customSensorCallback(topic,payload):
 	print("Received sensor data: %s" % (payload))
 ```
@@ -77,9 +81,11 @@ def customSensorCallback(topic,payload):
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
 JumpWayPythonMQTTDeviceConnection.deviceCommandsCallback = customDeviceCommandsCallback
 
+```
 This is a callback that is triggered when your device receives a command from an application. 
 You can edit what this call back does by editing this section:
 
+```
 def customDeviceCommandsCallback(topic,payload):
 	print("Received command data: %s" % (payload))
 	jsonData = json.loads(payload)
