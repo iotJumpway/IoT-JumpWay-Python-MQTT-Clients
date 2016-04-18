@@ -46,40 +46,10 @@ password = "YourTechBubbleJumpWayMQTTPassword"
 This is the MQTT password you are given when you create the Location Device.
 ```
 
-###Raspberry Pi Callback Functions
+###Raspberry Pi Message Callback Functions
 --------------------------------
 
-At this moment there are 3 callback functions in place, you can choose which ones to activate by commenting / uncommenting and can also edit the callback functions to carry out specific tasks once they are called.
-
-#### Status Callback
-
-```
-JumpWayPythonMQTTDeviceConnection.subscribeToDeviceStatus()
-JumpWayPythonMQTTDeviceConnection.deviceStatusCallback = customStatusCallback
-
-```
-This is a callback that is triggered when your device receives a status update, IE: online, offline. 
-You can edit what this call back does by editing this section:
-
-```
-def customStatusCallback(topic,payload):
-	print("Received status data: %s" % (payload))
-```
-
-#### Sensor Callback
-
-```
-JumpWayPythonMQTTDeviceConnection.subscribeToDeviceSensors()
-JumpWayPythonMQTTDeviceConnection.deviceSensorCallback = customSensorCallback
-
-```
-This is a callback that is triggered when your device receives a sensor update, IE: temperature readings etc. 
-You can edit what this call back does by editing this section:
-
-```
-def customSensorCallback(topic,payload):
-	print("Received sensor data: %s" % (payload))
-```
+At this moment there is 1 device messagge callback function in place and you can edit the callback functions to carry out specific tasks once its is called.
 
 #### Command Callback
 
@@ -100,3 +70,42 @@ def customDeviceCommandsCallback(topic,payload):
 	elif jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='OFF':
 		GPIO.output(actuator1Pin,GPIO.LOW)
 ```
+
+###Raspberry Pi Message Publish Functions
+--------------------------------
+
+At this moment there are 4 publish functions in place and you can choose which ones to use.
+
+#### Status Publish
+
+```
+JumpWayPythonMQTTDeviceConnection.publishToDeviceStatus("ONLINE")
+
+```
+This is a publish command that can send device status notifications to all applications that are subscribed to the device status topic for a particular device. 
+
+#### Sensor Publish
+
+```
+JumpWayPythonMQTTDeviceConnection.publishToDeviceSensors({"Sensor":"Temperature","SensorID":1,"SensorValue":"25.00"})
+
+```
+This is a publish command that can send device sensor data to all applications that are subscribed to the device sensor topic for a particular device. 
+
+#### Actuator Publish
+
+```
+JumpWayPythonMQTTDeviceConnection.publishToDeviceActuators({"Actuator":"LED","ActuatorID":1,"ActuatorValue":"ON"})
+
+```
+This is a publish command that can send device actuator data to all applications that are subscribed to the device actuator topic for a particular device. 
+
+#### Warning Publish
+
+```
+JumpWayPythonMQTTDeviceConnection.publishToDeviceWarnings({"WarningType":"Threshold","WarningOrigin":"Temperature","WarningValue":"150","WarningMessage":"Device temperature has passed threshold"})
+
+```
+This is a publish command that can send device warning statuses to all applications that are subscribed to the device warning topic for a particular device. 
+
+
