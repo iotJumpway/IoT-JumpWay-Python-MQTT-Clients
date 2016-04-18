@@ -38,42 +38,88 @@ This is the MQTT password you are given when you create the Location Application
 
 At this moment there is 6 application messagge callback function in place and you can edit the callback functions to carry out specific tasks once they are called.
 
-#### Raspberry Pi Command Callback
+#### Application Status Callback
 
 ```
-JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
-JumpWayPythonMQTTDeviceConnection.deviceCommandsCallback = customDeviceCommandsCallback
+JumpWayPythonMQTTApplicationConnection.subscribeToApplicationStatus(ApplicationID)
+JumpWayPythonMQTTApplicationConnection.applicationStatusCallback = customApplicationStatusCallback
 ```
-This is a callback that is triggered when your device receives a command from an application. 
+This is a callback that is triggered when your application receives a status notifcation from an application it is subscribed to.
+You can edit what this call back does by editing this section:
+
+```
+def customApplicationStatusCallback(topic,payload):
+	print("Received application status data: %s" % (payload))
+```
+
+#### Device Status Callback
+
+```
+JumpWayPythonMQTTApplicationConnection.subscribeToDeviceStatus(ZoneID,DeviceID)
+JumpWayPythonMQTTApplicationConnection.deviceStatusCallback = customDeviceStatusCallback
+```
+This is a callback that is triggered when your application receives a status notifcation from a device it is subscribed to.
+You can edit what this call back does by editing this section:
+
+```
+def customDeviceStatusCallback(topic,payload):
+	print("Received device status data: %s" % (payload))
+```
+
+#### Device Sensor Callback
+
+```
+JumpWayPythonMQTTApplicationConnection.subscribeToDeviceSensors(ZoneID,DeviceID)
+JumpWayPythonMQTTApplicationConnection.deviceSensorCallback = customSensorCallback
+```
+This is a callback that is triggered when your application receives a sensor notifcation from a device it is subscribed to.
+You can edit what this call back does by editing this section:
+
+```
+def customSensorCallback(topic,payload):
+	print("Received sensor data: %s" % (payload))
+```
+
+#### Device Actuator Callback
+
+```
+JumpWayPythonMQTTApplicationConnection.subscribeToDeviceActuators(ZoneID,DeviceID)
+JumpWayPythonMQTTApplicationConnection.deviceActuatorCallback = customActuatorCallback
+```
+This is a callback that is triggered when your application receives an actuator notifcation from a device it is subscribed to.
+You can edit what this call back does by editing this section:
+
+```
+def customActuatorCallback(topic,payload):
+	print("Received sensor data: %s" % (payload))
+```
+
+#### Device Command Callback
+
+```
+JumpWayPythonMQTTApplicationConnection.subscribeToDeviceCommands(ZoneID,DeviceID)
+JumpWayPythonMQTTApplicationConnection.deviceCommandsCallback = customDeviceCommandsCallback
+```
+This is a callback that is triggered when your application receives an command notifcation for a device it is subscribed to.
 You can edit what this call back does by editing this section:
 
 ```
 def customDeviceCommandsCallback(topic,payload):
-	print("Received command data: %s" % (payload))
-	jsonData = json.loads(payload)
-	if jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='ON':
-		GPIO.output(actuator1Pin,GPIO.HIGH)
-	elif jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='OFF':
-		GPIO.output(actuator1Pin,GPIO.LOW)
+	print("Received commands data: %s" % (payload))
 ```
 
-#### Intel Galileo Command Callback
+#### Device Warning Callback
 
 ```
-JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
-JumpWayPythonMQTTDeviceConnection.deviceCommandsCallback = customDeviceCommandsCallback
+JumpWayPythonMQTTApplicationConnection.subscribeToDeviceWarnings(ZoneID,DeviceID)
+JumpWayPythonMQTTApplicationConnection.deviceWarningsCallback = customDeviceWarningsCallback
 ```
-This is a callback that is triggered when your device receives a command from an application. 
+This is a callback that is triggered when your application receives an warning notifcation for a device it is subscribed to.
 You can edit what this call back does by editing this section:
 
 ```
-def customDeviceCommandsCallback(topic,payload):
-	print("Received command data: %s" % (payload))
-	jsonData = json.loads(payload)
-	if jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='ON':
-		actuator1Pin.write(1)
-	elif jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='OFF':
-		actuator1Pin.write(0)
+def customDeviceWarningsCallback(topic,payload):
+	print("Received warning data: %s" % (payload))
 ```
 
 ###Message Publish Functions
