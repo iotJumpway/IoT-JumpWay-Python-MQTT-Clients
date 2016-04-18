@@ -7,7 +7,7 @@ Here you will find sample device scripts for Raspberry Pi and Intel Galilleo dev
 
 Make sure that you have followed the instructions on the home page of this repository and installed the Python MQTT library on your device.
 
-Raspberry Pi
+##Raspberry Pi
 ------------
 
 First of all you need to connect up an LED to your Raspberry Pi. Connect the LED to pin 18 of your Raspberry Pi or change the following line to reflect which pin your LED is connected to. To connect the LED you will need a minimum of 1 bread board, 1 LED, 1 resistor and two jumper wires.
@@ -16,7 +16,7 @@ First of all you need to connect up an LED to your Raspberry Pi. Connect the LED
 actuator1Pin = 18
 ```
 
-Raspberry Pi Credentials
+###Raspberry Pi Credentials
 -------------------------
 
 Once you have set these up you can begin to edit your device connection credentials. You will be provided these credentials when you set up a device in the IoT JumpWay GUI.
@@ -46,10 +46,12 @@ password = "YourTechBubbleJumpWayMQTTPassword"
 This is the MQTT password you are given when you create the Location Device.
 ```
 
-Raspberry Pi Callback Functions
+###Raspberry Pi Callback Functions
 --------------------------------
 
 At this moment there are 3 callback functions in place, you can choose which ones to activate by commenting / uncommenting and can also edit the callback functions to carry out specific tasks once they are called.
+
+#### Status Callback
 
 ```
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceStatus()
@@ -64,6 +66,8 @@ def customStatusCallback(topic,payload):
 	print("Received status data: %s" % (payload))
 ```
 
+#### Sensor Callback
+
 ```
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceSensors()
 JumpWayPythonMQTTDeviceConnection.deviceSensorCallback = customSensorCallback
@@ -76,6 +80,8 @@ You can edit what this call back does by editing this section:
 def customSensorCallback(topic,payload):
 	print("Received sensor data: %s" % (payload))
 ```
+
+#### Command Callback
 
 ```
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
