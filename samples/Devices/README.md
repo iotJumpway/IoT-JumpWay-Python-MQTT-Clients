@@ -55,8 +55,36 @@ At this moment there are 3 callback functions in place, you can choose which one
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceStatus()
 JumpWayPythonMQTTDeviceConnection.deviceStatusCallback = customStatusCallback
 
-This is a callback that is triggered when your device sends a status update, IE: online, offline. You can edit what this call back does by editing this section:
+This is a callback that is triggered when your device receives a status update, IE: online, offline. 
+You can edit what this call back does by editing this section:
 
 def customStatusCallback(topic,payload):
 	print("Received status data: %s" % (payload))
+```
+
+```
+JumpWayPythonMQTTDeviceConnection.subscribeToDeviceSensors()
+JumpWayPythonMQTTDeviceConnection.deviceSensorCallback = customSensorCallback
+
+This is a callback that is triggered when your device receives a sensor update, IE: temperature readings etc. 
+You can edit what this call back does by editing this section:
+
+def customSensorCallback(topic,payload):
+	print("Received sensor data: %s" % (payload))
+```
+
+```
+JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
+JumpWayPythonMQTTDeviceConnection.deviceCommandsCallback = customDeviceCommandsCallback
+
+This is a callback that is triggered when your device receives a command from an application. 
+You can edit what this call back does by editing this section:
+
+def customDeviceCommandsCallback(topic,payload):
+	print("Received command data: %s" % (payload))
+	jsonData = json.loads(payload)
+	if jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='ON':
+		GPIO.output(actuator1Pin,GPIO.HIGH)
+	elif jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='OFF':
+		GPIO.output(actuator1Pin,GPIO.LOW)
 ```
