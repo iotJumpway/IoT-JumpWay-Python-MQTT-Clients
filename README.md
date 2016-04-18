@@ -63,6 +63,9 @@ Raspberry Pi Device
 ```
     [root@localhost ~]# sudo python RaspberryPiDevice.py
 ```
+- For more in depth information on setting up and using the device samples, check out the following link:
+
+    https://github.com/AdamMiltonBarker/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Devices/README.md#iot-jumpway-python-mqtt-device-samples
 
 Raspberry Pi Application 
 -------------------------
