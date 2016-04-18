@@ -15,3 +15,14 @@ First of all you need to connect up an LED to your Raspberry Pi. Connect the LED
 ```
 actuator1Pin = 18
 ```
+
+Once you have set these up you can begin to edit your device connection credentials. You will be provided these credentials when you set up a device in the IoT JumpWay GUI.
+
+```
+locationID = "YourTechBubbleJumpWayLocationID" This is the ID of the Location Space that you attached the device to.
+zoneID = "YourTechBubbleJumpWayZoneID" This is the ID of the Location Zone that you attached the device to.
+deviceId = "YourTechBubbleJumpWayDeviceID" This is the ID of the Location Device that you created.
+deviceName = "YourTechBubbleJumpWayDeviceName" This is the name of the Location Device that you created.
+username = "YourTechBubbleJumpWayMQTTUsername" This is the MQTT username you are given when you create the Location Device.
+password = "YourTechBubbleJumpWayMQTTPassword" This is the MQTT password you are given when you create the Location Device.
+```
