@@ -10,13 +10,22 @@ Make sure that you have followed the instructions on the home page of this repos
 ##Raspberry Pi
 ------------
 
-First of all you need to connect up an LED to your Raspberry Pi. Connect the LED to pin 18 of your Raspberry Pi or change the following line to reflect which pin your LED is connected to. To connect the LED you will need a minimum of 1 bread board, 1 LED, 1 resistor and two jumper wires.
+First of all you need to connect up an LED to your Raspberry Pi. To connect the LED you will need a minimum of 1 breadboard, 1 LED, 1 resistor and two jumper wires. Connect the LED to pin 18 of your Raspberry Pi or change the following line to reflect which pin your LED is connected to. 
 
 ```
 actuator1Pin = 18
 ```
 
-###Raspberry Pi Credentials
+##Intel Galileo
+------------
+
+First of all you need to connect up an LED to your Intel Galileo. To connect the LED you will need a minimum of 1 breadboard, 1 LED, 1 resistor and two jumper wires. Connect the LED to pin 5 of your Intel Galileo or change the following line to reflect which pin your LED is connected to. 
+
+```
+actuator1Pin = 5
+```
+
+###Connection Credentials
 -------------------------
 
 Once you have set these up you can begin to edit your device connection credentials. You will be provided these credentials when you set up a device in the IoT JumpWay GUI.
@@ -46,12 +55,12 @@ password = "YourTechBubbleJumpWayMQTTPassword"
 This is the MQTT password you are given when you create the Location Device.
 ```
 
-###Raspberry Pi Message Callback Functions
+###Message Callback Functions
 --------------------------------
 
 At this moment there is 1 device messagge callback function in place and you can edit the callback functions to carry out specific tasks once its is called.
 
-#### Command Callback
+#### Raspberry Pi Command Callback
 
 ```
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
@@ -70,7 +79,26 @@ def customDeviceCommandsCallback(topic,payload):
 		GPIO.output(actuator1Pin,GPIO.LOW)
 ```
 
-###Raspberry Pi Message Publish Functions
+#### Intel Galileo Command Callback
+
+```
+JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
+JumpWayPythonMQTTDeviceConnection.deviceCommandsCallback = customDeviceCommandsCallback
+```
+This is a callback that is triggered when your device receives a command from an application. 
+You can edit what this call back does by editing this section:
+
+```
+def customDeviceCommandsCallback(topic,payload):
+	print("Received command data: %s" % (payload))
+	jsonData = json.loads(payload)
+	if jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='ON':
+		actuator1Pin.write(1)
+	elif jsonData['ActuatorID']==1 and jsonData['Command']=='TOGGLE' and jsonData['CommandValue']=='OFF':
+		actuator1Pin.write(0)
+```
+
+###Message Publish Functions
 --------------------------------
 
 At this moment there are 4 publish functions in place and you can choose which ones to use.
