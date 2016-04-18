@@ -1,5 +1,5 @@
 # *****************************************************************************
-# Copyright (c) 2015 TechBubble Technologies and other Contributors.
+# Copyright (c) 2016 TechBubble Technologies and other Contributors.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -31,12 +31,6 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(actuator1Pin,GPIO.OUT)
 
-def customStatusCallback(topic,payload):
-	print("Received status data: %s" % (payload))
-	
-def customSensorCallback(topic,payload):
-	print("Received sensor data: %s" % (payload))
-	
 def customDeviceCommandsCallback(topic,payload):
 	print("Received command data: %s" % (payload))
 	jsonData = json.loads(payload)
@@ -53,13 +47,12 @@ except Exception as e:
 	sys.exit()
 
 JumpWayPythonMQTTDeviceConnection.connectToDevice()
-#JumpWayPythonMQTTDeviceConnection.subscribeToDeviceStatus()
-#JumpWayPythonMQTTDeviceConnection.deviceStatusCallback = customStatusCallback
-#JumpWayPythonMQTTDeviceConnection.subscribeToDeviceSensors()
-#JumpWayPythonMQTTDeviceConnection.deviceSensorCallback = customSensorCallback
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
 JumpWayPythonMQTTDeviceConnection.deviceCommandsCallback = customDeviceCommandsCallback
 
 while True:
+	#JumpWayPythonMQTTDeviceConnection.publishToDeviceSensors({"Sensor":"Temperature","SensorID":1,"SensorValue":"25.00"})
+	#JumpWayPythonMQTTDeviceConnection.publishToDeviceActuators({"Actuator":"LED","ActuatorID":1,"ActuatorValue":"ON"})
+	#JumpWayPythonMQTTDeviceConnection.publishToDeviceWarnings({"WarningType":"Threshold","WarningOrigin":"Temperature","WarningValue":"150","WarningMessage":"Device temperature has passed threshold"})
 	time.sleep(1)
 JumpWayPythonMQTTDeviceConnection.disconnectFromDevice()

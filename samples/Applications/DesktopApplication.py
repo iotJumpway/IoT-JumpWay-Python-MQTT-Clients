@@ -1,5 +1,5 @@
 # *****************************************************************************
-# Copyright (c) 2015 TechBubble Technologies and other Contributors.
+# Copyright (c) 2016 TechBubble Technologies and other Contributors.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -25,6 +25,9 @@ def customDeviceStatusCallback(topic,payload):
 def customSensorCallback(topic,payload):
 	print("Received sensor data: %s" % (payload))
 	
+def customActuatorCallback(topic,payload):
+	print("Received sensor data: %s" % (payload))
+	
 def customDeviceCommandsCallback(topic,payload):
 	print("Received commands data: %s" % (payload))
 	
@@ -32,7 +35,6 @@ def customDeviceWarningsCallback(topic,payload):
 	print("Received warning data: %s" % (payload))
 	
 locationID = "YourTechBubbleJumpWayLocationID"
-zoneID = "YourTechBubbleJumpWayZoneID"
 applicationID = "YourTechBubbleJumpWayDeviceID"
 applicationName = "YourTechBubbleJumpWayDeviceName"
 username = "YourTechBubbleJumpWayMQTTUsername"
@@ -52,6 +54,8 @@ JumpWayPythonMQTTApplicationConnection.connectToApplication()
 #JumpWayPythonMQTTApplicationConnection.deviceStatusCallback = customDeviceStatusCallback
 #JumpWayPythonMQTTApplicationConnection.subscribeToDeviceSensors(1,1)
 #JumpWayPythonMQTTApplicationConnection.deviceSensorCallback = customSensorCallback
+#JumpWayPythonMQTTApplicationConnection.subscribeToDeviceActuators(1,1)
+#JumpWayPythonMQTTApplicationConnection.deviceActuatorCallback = customActuatorCallback
 #JumpWayPythonMQTTApplicationConnection.subscribeToDeviceCommands(1,1)
 #JumpWayPythonMQTTApplicationConnection.deviceCommandsCallback = customDeviceCommandsCallback
 #JumpWayPythonMQTTApplicationConnection.subscribeToDeviceWarnings(1,1)

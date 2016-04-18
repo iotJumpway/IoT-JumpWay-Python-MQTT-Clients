@@ -9,6 +9,7 @@
 # Contributors:
 #   Adam Milton-Barker  - Initial Contribution
 #   Adam Mosely  - Tester
+#   John Ducrest  - Tester
 # *****************************************************************************
 
 import inspect
@@ -120,6 +121,22 @@ class JumpWayPythonMQTTApplicationConnection():
 			print("Subscribed to Device Sensors " + deviceDataTopic)
 			return True
 	
+	def subscribeToDeviceActuators(self, zoneID, deviceID, qos=0):
+		if self._configs['locationID'] == None:
+			print("locationName is required!")
+			return False
+		elif zoneID == None:
+			print("zoneID is required!")
+			return False
+		elif deviceID == None:
+			print("deviceID is required!")
+			return False
+		else:
+			deviceActuatorsTopic = '%s/Devices/%s/%s/Actuators' % (self._configs['locationID'], zoneID, deviceID)
+			self.mqttClient.subscribe(deviceActuatorsTopic, qos=qos)
+			print("Subscribed to Device Actuators " + deviceActuatorsTopic)
+			return True
+	
 	def subscribeToDeviceWarnings(self, zoneID, deviceID, qos=0):
 		if self._configs['locationID'] == None:
 			print("locationName is required!")
@@ -158,6 +175,11 @@ class JumpWayPythonMQTTApplicationConnection():
 					print("No deviceSensorCallback set")
 				else:
 					self.deviceSensorCallback(msg.topic,msg.payload)
+			elif splitTopic[4]=='Actuators':
+				if self.deviceActuatorCallback == None:
+					print("No deviceActuatorCallback set")
+				else:
+					self.deviceActuatorCallback(msg.topic,msg.payload)
 			elif splitTopic[4]=='Commands':
 				if self.deviceCommandsCallback == None:
 					print("No deviceCommandsCallback set")
