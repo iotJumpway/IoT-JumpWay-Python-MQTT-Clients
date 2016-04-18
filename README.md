@@ -5,12 +5,6 @@ Python MQTT library that allows developers to communicate with the TechBubble Io
 
 Platform <https://iot.techbubbletechnologies.com>.
 
-Library Dependencies
--------------------
-
--  Python 2.7 <https://www.python.org/downloads/release/python-2710/>
--  paho-mqtt <https://pypi.python.org/pypi/paho-mqtt>
-
 Library Installation
 ---------------------
 
@@ -18,11 +12,15 @@ In all cases whether using devices or applications you first need to install the
 
 - Install the latest version of the library with pip
 
+```
     [root@localhost ~]# pip install techbubbleiotjumpwaymqtt
+```
 
 - Upgrade to the latest version of the library with pip
 
+```
     [root@localhost ~]# pip install techbubbleiotjumpwaymqtt --upgrade
+```
 
 Raspberry Pi
 ------------
@@ -31,19 +29,25 @@ Make sure your firmware and software etc is up to date.
 
 - Update firmware
 
+```
     [root@localhost ~]# sudo rpi-update
+```
 
 - Update trusted certificates
 
+```
     [root@localhost ~]# sudo apt-get install ca-certificates
+```
 
 - Update software
 
+```
     [root@localhost ~]# sudo apt-get update
     
     [root@localhost ~]# sudo apt-get upgrade
     
     [root@localhost ~]# sudo apt-get dist-upgrade
+```
 
 Raspberry Pi Device 
 --------------------
@@ -56,7 +60,9 @@ Raspberry Pi Device
 
 - Run RaspberryPiDevice.py
 
+```
     [root@localhost ~]# sudo python RaspberryPiDevice.py
+```
 
 Raspberry Pi Application 
 -------------------------
@@ -65,9 +71,12 @@ Raspberry Pi Application
 
     https://github.com/AdamMiltonBarker/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Applications/RaspberryPiApplication.py
 
+
 - Run RaspberryPiApplication.py
 
+```
     [root@localhost ~]# sudo python RaspberryPiApplication.py
+```
 
 Your LED will now be controlled by the application via the TechBubble IoT JumpWay MQTT Broker
 
