@@ -80,6 +80,9 @@ Raspberry Pi Application
 ```
     [root@localhost ~]# sudo python RaspberryPiApplication.py
 ```
+- For more in depth information about setting up and using the application samples, check out the following link:
+
+    https://github.com/AdamMiltonBarker/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Applications/README.md#iot-jumpway-python-mqtt-application-samples
 
 Your LED will now be controlled by the application via the TechBubble IoT JumpWay MQTT Broker
 
