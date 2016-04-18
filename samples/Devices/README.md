@@ -16,6 +16,9 @@ First of all you need to connect up an LED to your Raspberry Pi. Connect the LED
 actuator1Pin = 18
 ```
 
+Raspberry Pi Credentials
+-------------------------
+
 Once you have set these up you can begin to edit your device connection credentials. You will be provided these credentials when you set up a device in the IoT JumpWay GUI.
 
 ```
@@ -41,4 +44,19 @@ This is the MQTT username you are given when you create the Location Device.
 ```
 password = "YourTechBubbleJumpWayMQTTPassword" 
 This is the MQTT password you are given when you create the Location Device.
+```
+
+Raspberry Pi Callback Functions
+--------------------------------
+
+At this moment there are 3 callback functions in place, you can choose which ones to activate by commenting / uncommenting and can also edit the callback functions to carry out specific tasks once they are called.
+
+```
+JumpWayPythonMQTTDeviceConnection.subscribeToDeviceStatus()
+JumpWayPythonMQTTDeviceConnection.deviceStatusCallback = customStatusCallback
+
+This is a callback that is triggered when your device sends a status update, IE: online, offline. You can edit what this call back does by editing this section:
+
+def customStatusCallback(topic,payload):
+	print("Received status data: %s" % (payload))
 ```
