@@ -56,7 +56,6 @@ At this moment there is 1 device messagge callback function in place and you can
 ```
 JumpWayPythonMQTTDeviceConnection.subscribeToDeviceCommands()
 JumpWayPythonMQTTDeviceConnection.deviceCommandsCallback = customDeviceCommandsCallback
-
 ```
 This is a callback that is triggered when your device receives a command from an application. 
 You can edit what this call back does by editing this section:
@@ -80,7 +79,6 @@ At this moment there are 4 publish functions in place and you can choose which o
 
 ```
 JumpWayPythonMQTTDeviceConnection.publishToDeviceStatus("ONLINE")
-
 ```
 This is a publish command that can send device status notifications to all applications that are subscribed to the device status topic for a particular device. 
 
@@ -88,7 +86,6 @@ This is a publish command that can send device status notifications to all appli
 
 ```
 JumpWayPythonMQTTDeviceConnection.publishToDeviceSensors({"Sensor":"Temperature","SensorID":1,"SensorValue":"25.00"})
-
 ```
 This is a publish command that can send device sensor data to all applications that are subscribed to the device sensor topic for a particular device. 
 
@@ -96,7 +93,6 @@ This is a publish command that can send device sensor data to all applications t
 
 ```
 JumpWayPythonMQTTDeviceConnection.publishToDeviceActuators({"Actuator":"LED","ActuatorID":1,"ActuatorValue":"ON"})
-
 ```
 This is a publish command that can send device actuator data to all applications that are subscribed to the device actuator topic for a particular device. 
 
@@ -104,7 +100,6 @@ This is a publish command that can send device actuator data to all applications
 
 ```
 JumpWayPythonMQTTDeviceConnection.publishToDeviceWarnings({"WarningType":"Threshold","WarningOrigin":"Temperature","WarningValue":"150","WarningMessage":"Device temperature has passed threshold"})
-
 ```
 This is a publish command that can send device warning statuses to all applications that are subscribed to the device warning topic for a particular device. 
 
