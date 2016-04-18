@@ -1,29 +1,11 @@
 IoT JumpWay Python MQTT Application Samples
 ======================================
 
-Here you will find sample application scripts for Raspberry Pi and Desktop (Mac/PC/Laptop etc) applications to connect to the TechBubble Technologies IoT JumpWay using Python and MQTT. The codes allow you to set up a basic device that allows control of an LED. Once you understand how it works you are free to add as many actuators and sensors to your device and modify your code accordingly.
+Here you will find sample application scripts for Raspberry Pi and Desktop (Mac/PC/Laptop etc) applications to connect to the TechBubble Technologies IoT JumpWay using Python and MQTT. The codes allow you to set up a basic application that allows control of devices attached to the same Location Space. Once you understand how it works you are free to modify your code accordingly.
 
 # Before You Begin
 
 Make sure that you have followed the instructions on the home page of this repository and installed the Python MQTT library on your device.
-
-##Raspberry Pi
-------------
-
-First of all you need to connect up an LED to your Raspberry Pi. To connect the LED you will need a minimum of 1 breadboard, 1 LED, 1 resistor and two jumper wires. Connect the LED to pin 18 of your Raspberry Pi or change the following line to reflect which pin your LED is connected to. 
-
-```
-actuator1Pin = 18
-```
-
-##Intel Galileo
-------------
-
-First of all you need to connect up an LED to your Intel Galileo. To connect the LED you will need a minimum of 1 breadboard, 1 LED, 1 resistor and two jumper wires. Connect the LED to pin 5 of your Intel Galileo or change the following line to reflect which pin your LED is connected to. 
-
-```
-actuator1Pin = 5
-```
 
 ###Connection Credentials
 -------------------------
@@ -35,30 +17,26 @@ locationID = "YourTechBubbleJumpWayLocationID"
 This is the ID of the Location Space that you attached the device to.
 ```
 ```
-zoneID = "YourTechBubbleJumpWayZoneID" 
-This is the ID of the Location Zone that you attached the device to.
+applicationID = "YourTechBubbleJumpWaApplicationID" 
+This is the ID of the Location Application that you are connecting to.
 ```
 ```
-deviceId = "YourTechBubbleJumpWayDeviceID" 
-This is the ID of the Location Device that you created.
-```
-```
-deviceName = "YourTechBubbleJumpWayDeviceName" 
-This is the name of the Location Device that you created.
+applicationName = "YourTechBubbleJumpWayApplicationName"
+This is the ID of the Location Application that you are connecting to.
 ```
 ```
 username = "YourTechBubbleJumpWayMQTTUsername" 
-This is the MQTT username you are given when you create the Location Device.
+This is the MQTT username you are given when you create the Location Application.
 ```
 ```
 password = "YourTechBubbleJumpWayMQTTPassword" 
-This is the MQTT password you are given when you create the Location Device.
+This is the MQTT password you are given when you create the Location Application.
 ```
 
 ###Message Callback Functions
 --------------------------------
 
-At this moment there is 1 device messagge callback function in place and you can edit the callback functions to carry out specific tasks once its is called.
+At this moment there is 6 application messagge callback function in place and you can edit the callback functions to carry out specific tasks once they are called.
 
 #### Raspberry Pi Command Callback
 
