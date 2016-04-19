@@ -1,7 +1,9 @@
 TechBubble IoT JumpWay Python MQTT Library
 ============================================
 
-Python MQTT library that allows developers to communicate with the TechBubble IoT JumpWay MQTT Broker.
+TechBubble Tecnologies Internet of Things (IoT) JumpWay is a web platform that allows anyone to connect IoT devices such as Raspberry Pi, Intel Galileo, Arduino, ESP8266 and even phones,PCs, Macs and laptops to the Internet of Things. The various IoT JumpWay libraries and samples allow you to connect devices and sensors to the IoT JumpWay and control/monitor sensors/actuators and data to and from the devices.
+
+The  Python MQTT library allows developers to communicate with the TechBubble IoT JumpWay MQTT Broker and provides a number of device and applications examples.
 
 Platform <https://iot.techbubbletechnologies.com>.
 
