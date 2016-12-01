@@ -7,9 +7,9 @@
 # http://www.eclipse.org/legal/epl-v10.html 
 #
 # Contributors:
-#   Adam Milton-Barker  - Initial Contribution
-#   Adam Mosely  - Tester
-#   John Ducrest  - Tester
+#   Adam Milton-Barker - TechBubble Technologies Limited
+#   Andrej Petelin - TechBubble Technologies Limited
+#   Irene Naya  - TechBubble Technologies Limited
 # *****************************************************************************
 
 import inspect

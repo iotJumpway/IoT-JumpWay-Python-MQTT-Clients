@@ -1,5 +1,7 @@
-TechBubble IoT JumpWay Python MQTT Library
+# TechBubble IoT JumpWay Python MQTT Library
 ============================================
+
+##Introduction
 
 TechBubble Tecnologies Internet of Things (IoT) JumpWay is a web platform that allows anyone to connect IoT devices such as Raspberry Pi, Intel Galileo, Arduino, ESP8266 and even phones,PCs, Macs and laptops to the Internet of Things. The various IoT JumpWay libraries and samples allow you to connect devices and sensors to the IoT JumpWay and control/monitor sensors/actuators and data to and from the devices.
 
@@ -7,7 +9,7 @@ The  Python MQTT library allows developers to communicate with the TechBubble Io
 
 Platform <https://iot.techbubbletechnologies.com>.
 
-Library Installation
+### Library Installation
 ---------------------
 
 In all cases whether using devices or applications you first need to install the library. 
@@ -24,7 +26,7 @@ In all cases whether using devices or applications you first need to install the
     [root@localhost ~]# pip install techbubbleiotjumpwaymqtt --upgrade
 ```
 
-Raspberry Pi
+### Raspberry Pi
 ------------
 
 Make sure your firmware and software etc is up to date.
@@ -51,14 +53,14 @@ Make sure your firmware and software etc is up to date.
     [root@localhost ~]# sudo apt-get dist-upgrade
 ```
 
-Raspberry Pi Device 
+### Raspberry Pi Device 
 --------------------
 
 - Add LED to pin 18 of your Raspberry Pi
 
 - Download device sample to home folder of Raspberry Pi and add device credentials from IoT JumpWay Developer GUI
 
-    https://github.com/AdamMiltonBarker/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Devices/RaspberryPiDevice.py
+    <a href="https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Devices/RaspberryPiDevice.py">https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Devices/RaspberryPiDevice.py</a>
 
 - Run RaspberryPiDevice.py
 
@@ -67,14 +69,14 @@ Raspberry Pi Device
 ```
 - For more in depth information on setting up and using the device samples, check out the following link:
 
-    https://github.com/AdamMiltonBarker/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Devices/README.md#iot-jumpway-python-mqtt-device-samples
+    <a href="https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT/tree/master/samples/Devices">https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT/tree/master/samples/Devices</a>
 
-Raspberry Pi Application 
+### Raspberry Pi Application 
 -------------------------
 
 - Download application sample to home folder of Raspberry Pi and add application credentials from IoT JumpWay Developer GUI. Remember to update the device/zone IDs that your application will be controlling.
 
-    https://github.com/AdamMiltonBarker/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Applications/RaspberryPiApplication.py
+    <a href="https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Applications/RaspberryPiApplication.py">https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Applications/RaspberryPiApplication.py</a>
 
 
 - Run RaspberryPiApplication.py
@@ -84,7 +86,7 @@ Raspberry Pi Application
 ```
 - For more in depth information about setting up and using the application samples, check out the following link:
 
-    https://github.com/AdamMiltonBarker/TechBubble-Iot-JumpWay-Python-MQTT/blob/master/samples/Applications/README.md#iot-jumpway-python-mqtt-application-samples
+    <a href="https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT/tree/master/samples/Applications">https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT/tree/master/samples/Applications</a>
 
 Your LED will now be controlled by the application via the TechBubble IoT JumpWay MQTT Broker
 

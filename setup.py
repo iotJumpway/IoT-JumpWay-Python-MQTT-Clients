@@ -13,7 +13,7 @@ setup(
     author_email='adammiltonbarker@gmail.com',
     package_dir={'': 'src'},
 	package_data={'techbubbleiotjumpwaymqtt': ['*.pem']},
-    url='https://github.com/AdamMiltonBarker/TechBubble-IoT-Jumpway/tree/master/jumpway-python/Devices/MQTT',
+    url='https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT',
     license='MIT',
     description='TechBubble Technologies IoT JumpWay MQTT Client for Python',
     packages=['techbubbleiotjumpwaymqtt'],
