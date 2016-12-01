@@ -149,7 +149,7 @@ class JumpWayPythonMQTTApplicationConnection():
 			return False
 		else:
 			deviceWarningTopic = '%s/Devices/%s/%s/Warnings' % (self._configs['locationID'], zoneID, deviceID)
-			self.mqttClient.subscribe(deviceDataTopic, qos=qos)
+			self.mqttClient.subscribe(deviceWarningTopic, qos=qos)
 			print("Subscribed to Device Warnings " + deviceWarningTopic)
 			return True
 
