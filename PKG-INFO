@@ -1,0 +1,10 @@
+Metadata-Version: 1.9
+Name: techbubbleiotjumpwaymqtt
+Version: 0.1.9
+Summary: TechBubble Technologies IoT JumpWay MQTT Client for Python
+Home-page: https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT
+Author: Adam Milton-Barker
+Author-email: adammiltonbarker@gmail.com
+License: Eclipse Public License - v 1.0
+Description: Python MQTT module that allows developers to communicate with the TechBubble IoT JumpWay MQTT Broker Platform
+Platform: UNKNOWN
