@@ -60,6 +60,37 @@ class JumpWayPythonMQTTDeviceConnection():
 	def on_connect(self, client, obj, flags, rc):
 			self.publishToDeviceStatus("ONLINE")
 			print("rc: "+str(rc))
+
+	def on_subscribe(self, client, obj, mid, granted_qos):
+			print("Subscribed: "+str(self._configs['deviceName']))
+
+	def on_message(self, client, obj, msg):
+		splitTopic=msg.topic.split("/")
+		if splitTopic[4]=='Commands':
+			if self.deviceCommandsCallback == None:
+				print("No deviceCommandsCallback set")
+			else:
+				self.deviceCommandsCallback(msg.topic,msg.payload)
+		elif splitTopic[4]=='Keys':
+			if self.deviceKeysCallback == None:
+				print("No deviceKeysCallback set")
+			else:
+				self.deviceKeysCallback(msg.topic,msg.payload)
+		elif splitTopic[4]=='SSLs':
+			if self.deviceSSLsCallback == None:
+				print("No deviceSSLsCallback set")
+			else:
+				self.deviceSSLsCallback(msg.topic,msg.payload)
+		elif splitTopic[4]=='Package':
+			if self.devicePackageCallback == None:
+				print("No devicePackageCallback set")
+			else:
+				self.devicePackageCallback(msg.topic,msg.payload)
+		elif splitTopic[4]=='AITraining':
+			if self.deviceAITrainingCallback == None:
+				print("No deviceAITrainingCallback set")
+			else:
+				self.deviceAITrainingCallback(msg.topic,msg.payload)
 	
 	def subscribeToDeviceCommands(self, qos=0):
 		if self._configs['locationID'] == None:
@@ -76,17 +107,54 @@ class JumpWayPythonMQTTDeviceConnection():
 			self.mqttClient.subscribe(deviceCommandsTopic, qos=qos)
 			print("Subscribed to Device Commands "+deviceCommandsTopic)
 			return True
-
-	def on_subscribe(self, client, obj, mid, granted_qos):
-			print("Subscribed: "+str(self._configs['deviceName']))
-
-	def on_message(self, client, obj, msg):
-		splitTopic=msg.topic.split("/")
-		if splitTopic[4]=='Commands':
-			if self.deviceCommandsCallback == None:
-				print("No deviceCommandsCallback set")
-			else:
-				self.deviceCommandsCallback(msg.topic,msg.payload)
+	
+	def subscribeToDeviceKey(self, qos=0):
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
+			return False
+		elif self._configs['zoneID'] == None:
+			print("zoneID is required!")
+			return False
+		elif self._configs['deviceId'] == None:
+			print("deviceId is required!")
+			return False
+		else:
+			deviceKeyTopic = '%s/Devices/%s/%s/Keys' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			self.mqttClient.subscribe(deviceKeyTopic, qos=qos)
+			print("Subscribed to Device Keys "+deviceKeyTopic)
+			return True
+	
+	def subscribeToDeviceSSL(self, qos=0):
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
+			return False
+		elif self._configs['zoneID'] == None:
+			print("zoneID is required!")
+			return False
+		elif self._configs['deviceId'] == None:
+			print("deviceId is required!")
+			return False
+		else:
+			deviceSSLTopic = '%s/Devices/%s/%s/SSLs' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			self.mqttClient.subscribe(deviceSSLTopic, qos=qos)
+			print("Subscribed to Device SSLs "+deviceSSLTopic)
+			return True
+	
+	def subscribeToAITraining(self, qos=0):
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
+			return False
+		elif self._configs['zoneID'] == None:
+			print("zoneID is required!")
+			return False
+		elif self._configs['deviceId'] == None:
+			print("deviceId is required!")
+			return False
+		else:
+			deviceAITrainingTopic = '%s/Devices/%s/%s/AITraining/#' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			self.mqttClient.subscribe(deviceAITrainingTopic, qos=qos)
+			print("Subscribed to AI Training "+deviceAITrainingTopic)
+			return True
 	
 	def publishToDeviceStatus(self, data):
 		if self._configs['locationID'] == None:
@@ -147,6 +215,36 @@ class JumpWayPythonMQTTDeviceConnection():
 			deviceSensorsTopic = '%s/Devices/%s/%s/Warnings' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
 			self.mqttClient.publish(deviceSensorsTopic,json.dumps(data))
 			print("Published to Device Warnings "+deviceSensorsTopic)
+	
+	def publishToDeviceCCTV(self, byteArray):
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
+			return False
+		elif self._configs['zoneID'] == None:
+			print("zoneID is required!")
+			return False
+		elif self._configs['deviceId'] == None:
+			print("deviceId is required!")
+			return False
+		else:
+			deviceCCTVTopic = '%s/Devices/%s/%s/CCTV' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			self.mqttClient.publish(deviceCCTVTopic,byteArray,0)
+			print("Published to Device CCTV "+deviceCCTVTopic)
+	
+	def publishToDeviceCCTVWarnings(self, byteArray):
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
+			return False
+		elif self._configs['zoneID'] == None:
+			print("zoneID is required!")
+			return False
+		elif self._configs['deviceId'] == None:
+			print("deviceId is required!")
+			return False
+		else:
+			deviceCCTVTopic = '%s/Devices/%s/%s/CCTVWarnings' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			self.mqttClient.publish(deviceCCTVTopic,byteArray,0)
+			print("Published to Device CCTV Warnings "+deviceCCTVTopic)
 
 	def on_publish(self, client, obj, mid):
 			print("Published: "+str(mid))
