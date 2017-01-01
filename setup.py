@@ -13,12 +13,12 @@ except ImportError:
 
 setup(
     name='techbubbleiotjumpwaymqtt',
-    version="0.1.9",
+    version="0.2.3",
     author='Adam Milton-Barker',
     author_email='adammiltonbarker@gmail.com',
     package_dir={'': 'src'},
 	package_data={'techbubbleiotjumpwaymqtt': ['*.pem']},
-    url='https://github.com/TechBubbleTechnologies/TechBubble-Iot-JumpWay-Python-MQTT',
+    url='https://github.com/TechBubbleTechnologies/Software-Python-MQTT',
     license='Eclipse Public License v1.0',
     description='TechBubble Technologies IoT JumpWay MQTT Client for Python',
     packages=['techbubbleiotjumpwaymqtt'],
