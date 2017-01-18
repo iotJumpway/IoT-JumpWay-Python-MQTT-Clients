@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name='techbubbleiotjumpwaymqtt',
-    version="0.3.1",
+    version="0.3.2",
     author='Adam Milton-Barker',
     author_email='adammiltonbarker@gmail.com',
     package_dir={'': 'src'},
