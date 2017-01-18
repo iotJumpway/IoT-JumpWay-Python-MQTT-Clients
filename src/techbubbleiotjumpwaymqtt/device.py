@@ -149,7 +149,7 @@ class JumpWayPythonMQTTDeviceConnection():
 			return False
 		else:
 			TassRecognitionTopic = '%s/Devices/%s/%s/TassRecognition' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
-			self.mqttClient.publish(deviceCCTVWarningsTopic,byteArray,0)
+			self.mqttClient.publish(TassRecognitionTopic,byteArray,0)
 			print("Published to Device TassRecognition Channel")
 
 	def on_publish(self, client, obj, mid):
