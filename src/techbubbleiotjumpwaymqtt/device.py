@@ -137,7 +137,7 @@ class JumpWayPythonMQTTDeviceConnection():
 			self.mqttClient.publish(deviceChannel,json.dumps(data))
 			print("Published to Device "+channel+" Channel")
 	
-	def publishToTassRecognitionChannel(self, byteArray):
+	def publishToTassActivityRecognitionChannel(self, byteArray, userID):
 		if self._configs['locationID'] == None:
 			print("locationID is required!")
 			return False
@@ -148,9 +148,24 @@ class JumpWayPythonMQTTDeviceConnection():
 			print("deviceId is required!")
 			return False
 		else:
-			TassRecognitionTopic = '%s/Devices/%s/%s/TassRecognition' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
-			self.mqttClient.publish(TassRecognitionTopic,byteArray,0)
-			print("Published to Device TassRecognition Channel")
+			ActivityRecognitionTopic = '%s/Devices/%s/%s/ActivityRecognition/%s' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'], userID)
+			self.mqttClient.publish(ActivityRecognitionTopic,byteArray,0)
+			print("Published to Device Tass Activity Recognition Channel ")
+	
+	def publishToTassActivityIntruderChannel(self, byteArray):
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
+			return False
+		elif self._configs['zoneID'] == None:
+			print("zoneID is required!")
+			return False
+		elif self._configs['deviceId'] == None:
+			print("deviceId is required!")
+			return False
+		else:
+			ActivityIntruderTopic = '%s/Devices/%s/%s/ActivityIntruder' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
+			self.mqttClient.publish(ActivityIntruderTopic,byteArray,0)
+			print("Published to Device Tass Activity Intruder Channel ")
 
 	def on_publish(self, client, obj, mid):
 			print("Published: "+str(mid))
