@@ -134,7 +134,7 @@ class JumpWayPythonMQTTDeviceConnection():
 			return False
 		else:
 			deviceChannel = '%s/Devices/%s/%s/%s' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'], channel)
-			self.mqttClient.publish(deviceChannel,data)
+			self.mqttClient.publish(deviceChannel,json.dumps(data))
 			print("Published to Device "+channel+" Channel")
 	
 	def publishToTassRecognitionChannel(self, byteArray):
