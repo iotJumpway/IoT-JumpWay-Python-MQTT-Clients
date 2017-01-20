@@ -59,99 +59,6 @@ class JumpWayPythonMQTTApplicationConnection():
 	def on_connect(self, client, obj, flags, rc):
 			self.publishToApplicationStatus("ONLINE")
 			print("rc: "+str(rc))
-	
-	def subscribeToApplicationStatus(self, applicationID, qos=0):
-		if self._configs['locationID'] == None:
-			print("locationName is required!")
-			return False
-		elif applicationID == None:
-			print("applicationID is required!")
-			return False
-		else:
-			applicationStatusTopic = '%s/Applications/%s/Status' % (self._configs['locationID'], applicationID)
-			self.mqttClient.subscribe(applicationStatusTopic, qos=qos)
-			print("Subscribed to Application Status " +applicationStatusTopic)
-			return True
-	
-	def subscribeToDeviceStatus(self, zoneID, deviceID, qos=0):
-		if self._configs['locationID'] == None:
-			print("locationName is required!")
-			return False
-		elif zoneID == None:
-			print("zoneID is required!")
-			return False
-		elif deviceID == None:
-			print("deviceID is required!")
-			return False
-		else:
-			deviceStatusTopic = '%s/Devices/%s/%s/Status' % (self._configs['locationID'], zoneID, deviceID)
-			self.mqttClient.subscribe(deviceStatusTopic, qos=qos)
-			print("Subscribed to Device Status " + deviceStatusTopic)
-			return True
-	
-	def subscribeToDeviceCommands(self, zoneID, deviceID, qos=0):
-		if self._configs['locationID'] == None:
-			print("locationName is required!")
-			return False
-		elif zoneID == None:
-			print("zoneID is required!")
-			return False
-		elif deviceID == None:
-			print("deviceID is required!")
-			return False
-		else:
-			deviceCommandsTopic = '%s/Devices/%s/%s/Commands' % (self._configs['locationID'], zoneID, deviceID)
-			self.mqttClient.subscribe(deviceCommandsTopic, qos=qos)
-			print("Subscribed to Device Commands " + deviceCommandsTopic)
-			return True
-	
-	def subscribeToDeviceSensors(self, zoneID, deviceID, qos=0):
-		if self._configs['locationID'] == None:
-			print("locationName is required!")
-			return False
-		elif zoneID == None:
-			print("zoneID is required!")
-			return False
-		elif deviceID == None:
-			print("deviceID is required!")
-			return False
-		else:
-			deviceDataTopic = '%s/Devices/%s/%s/Sensors' % (self._configs['locationID'], zoneID, deviceID)
-			self.mqttClient.subscribe(deviceDataTopic, qos=qos)
-			print("Subscribed to Device Sensors " + deviceDataTopic)
-			return True
-	
-	def subscribeToDeviceActuators(self, zoneID, deviceID, qos=0):
-		if self._configs['locationID'] == None:
-			print("locationName is required!")
-			return False
-		elif zoneID == None:
-			print("zoneID is required!")
-			return False
-		elif deviceID == None:
-			print("deviceID is required!")
-			return False
-		else:
-			deviceActuatorsTopic = '%s/Devices/%s/%s/Actuators' % (self._configs['locationID'], zoneID, deviceID)
-			self.mqttClient.subscribe(deviceActuatorsTopic, qos=qos)
-			print("Subscribed to Device Actuators " + deviceActuatorsTopic)
-			return True
-	
-	def subscribeToDeviceWarnings(self, zoneID, deviceID, qos=0):
-		if self._configs['locationID'] == None:
-			print("locationName is required!")
-			return False
-		elif zoneID == None:
-			print("zoneID is required!")
-			return False
-		elif deviceID == None:
-			print("deviceID is required!")
-			return False
-		else:
-			deviceWarningTopic = '%s/Devices/%s/%s/Warnings' % (self._configs['locationID'], zoneID, deviceID)
-			self.mqttClient.subscribe(deviceWarningTopic, qos=qos)
-			print("Subscribed to Device Warnings " + deviceWarningTopic)
-			return True
 
 	def on_subscribe(self, client, obj, mid, granted_qos):
 			print("Subscribed: "+str(obj))
@@ -191,6 +98,35 @@ class JumpWayPythonMQTTApplicationConnection():
 				else:
 					self.deviceWarningsCallback(msg.topic,msg.payload)
 	
+	def subscribeToApplicationChannel(self, channel, qos=0):
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
+			return False
+		elif self._configs['applicationID'] == None:
+			print("applicationID is required!")
+			return False
+		else:
+			applicationChannel = '%s/Applications/%s/%s' % (self._configs['locationID'], applicationID, channel)
+			self.mqttClient.subscribe(applicationChannel, qos=qos)
+			print("Subscribed to Application "+channel+" Channel")
+			return True
+	
+	def subscribeToDeviceChannel(self, channel, qos=0):
+		if self._configs['locationID'] == None:
+			print("locationID is required!")
+			return False
+		elif self._configs['zoneID'] == None:
+			print("zoneID is required!")
+			return False
+		elif self._configs['deviceId'] == None:
+			print("deviceId is required!")
+			return False
+		else:
+			deviceChannel = '%s/Devices/%s/%s/%s' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'], channel)
+			self.mqttClient.subscribe(deviceChannel, qos=qos)
+			print("Subscribed to Device "+channel+" Channel")
+			return True
+	
 	def publishToApplicationStatus(self, data):
 		if self._configs['locationID'] == None:
 			print("locationName is required!")
@@ -203,20 +139,20 @@ class JumpWayPythonMQTTApplicationConnection():
 			self.mqttClient.publish(deviceStatusTopic,data)
 			print("Published to Application Status "+deviceStatusTopic)
 	
-	def publishToDeviceCommands(self, zoneID, deviceID, data):
+	def publishToDeviceChannel(self, channel, data):
 		if self._configs['locationID'] == None:
-			print("locationName is required!")
+			print("locationID is required!")
 			return False
-		elif zoneID == None:
+		elif self._configs['zoneID'] == None:
 			print("zoneID is required!")
 			return False
-		elif deviceID == None:
-			print("deviceID is required!")
+		elif self._configs['deviceId'] == None:
+			print("deviceId is required!")
 			return False
 		else:
-			deviceCommandsTopic = '%s/Devices/%s/%s/Commands' % (self._configs['locationID'], zoneID, deviceID)
-			self.mqttClient.publish(deviceCommandsTopic,json.dumps(data))
-			print("Published to Device Commands "+deviceCommandsTopic)
+			deviceChannel = '%s/Devices/%s/%s/%s' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'], channel)
+			self.mqttClient.publish(deviceChannel,json.dumps(data))
+			print("Published to Device "+channel+" Channel")
 
 	def on_publish(self, client, obj, mid):
 			print("Published: "+str(mid))
