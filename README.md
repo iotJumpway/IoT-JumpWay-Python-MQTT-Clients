@@ -24,3 +24,31 @@ In all cases, whether using devices or applications you first need to install th
     [root@localhost ~]# pip install techbubbleiotjumpwaymqtt --upgrade
 ```
 
+## IoT JumpWay Guides
+
+- [TechBubble Technologies IoT JumpWay Developer Program (BETA) Registration Guide](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Docs/blob/master/1-Registration.md "IoT JumpWay Developer Program (BETA) Registration Guide")
+
+- [TechBubble Technologies IoT JumpWay Developer Program (BETA) Location Spaces Guide](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Docs/blob/master/2-Location-Spaces.md "IoT JumpWay Developer Program (BETA) Location Spaces Guide")
+
+- [TechBubble Technologies IoT JumpWay Developer Program (BETA) Location Zones Guide](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Docs/blob/master/3-Location-Zones.md "IoT JumpWay Developer Program (BETA) Location Zones Guide")
+
+- [TechBubble Technologies IoT JumpWay Developer Program (BETA) Location Devices Guide](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Docs/blob/master/4-Location-Devices.md "IoT JumpWay Developer Program (BETA) Location Devices Guide")
+
+- [TechBubble Technologies IoT JumpWay Developer Program (BETA) Location Applications Guide](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Docs/blob/master/5-Location-Applications.md "IoT JumpWay Developer Program (BETA) Location Applications Guide")
+
+- [IoT JumpWay Python MQTT Library](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Docs/blob/master/6-Python-MQTT-Clients.md "IoT JumpWay Python MQTT Library")
+
+## IoT JumpWay Examples & Source Code
+
+- [IoT JumpWay Intel Examples](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Intel-Examples "IoT JumpWay Intel Examples")
+
+- [IoT JumpWay Raspberry Pi Examples](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Intel-Examples "IoT JumpWay Raspberry Pi Examples")
+
+- [IoT JumpWay Arduino/ESP8266 Examples](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Arduino-Examples "IoT JumpWay Arduino/ESP8266 Examples")
+
+## IoT JumpWay Docs Contributors
+
+- [Adam Milton-Barker, TechBubble Technologies Founder](https://github.com/AdamMiltonBarker "Adam Milton-Barker, TechBubble Technologies Founder")
+
+- [Irene Naya, TechBubble Technologies Dev](https://github.com/irenenaya "Irene Naya, TechBubble Technologies Dev")
+

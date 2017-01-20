@@ -8,7 +8,6 @@
 #
 # Contributors:
 #   Adam Milton-Barker - TechBubble Technologies Limited
-#   Andrej Petelin - TechBubble Technologies Limited
 #   Irene Naya  - TechBubble Technologies Limited
 # *****************************************************************************
 
