@@ -1,4 +1,4 @@
-# TechBubble IoT JumpWay Python MQTT Client libraries
+# TechBubble IoT JumpWay Python MQTT Client Libraries
 
 ![TechBubble IoT JumpWay Docs](images/main/IoT-Jumpway.jpg)  
 
@@ -46,7 +46,7 @@ In all cases, whether using devices or applications you first need to install th
 
 - [IoT JumpWay Arduino/ESP8266 Examples](https://github.com/TechBubbleTechnologies/IoT-JumpWay-Arduino-Examples "IoT JumpWay Arduino/ESP8266 Examples")
 
-## IoT JumpWay Docs Contributors
+## IoT JumpWay Python MQTT Client Libraries Contributors
 
 - [Adam Milton-Barker, TechBubble Technologies Founder](https://github.com/AdamMiltonBarker "Adam Milton-Barker, TechBubble Technologies Founder")
 
