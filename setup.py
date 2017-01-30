@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name='techbubbleiotjumpwaymqtt',
-    version="0.3.3",
+    version="0.3.7",
     author='Adam Milton-Barker',
     author_email='adammiltonbarker@gmail.com',
     package_dir={'': 'src'},
@@ -23,7 +23,7 @@ setup(
     description='TechBubble Technologies IoT JumpWay MQTT Client for Python',
     packages=['techbubbleiotjumpwaymqtt'],
     install_requires=[
-        "paho-mqtt >= 1.1",
+        "paho-mqtt >= 1.2",
     ],
     classifiers=[],
 )

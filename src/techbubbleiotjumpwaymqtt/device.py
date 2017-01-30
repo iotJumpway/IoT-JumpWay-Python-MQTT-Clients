@@ -136,51 +136,6 @@ class JumpWayPythonMQTTDeviceConnection():
 			self.mqttClient.publish(deviceChannel,json.dumps(data))
 			print("Published to Device "+channel+" Channel")
 	
-	def publishToDeviceSensors(self, data):
-		if self._configs['locationID'] == None:
-			print("locationID is required!")
-			return False
-		elif self._configs['zoneID'] == None:
-			print("zoneID is required!")
-			return False
-		elif self._configs['deviceId'] == None:
-			print("deviceId is required!")
-			return False
-		else:
-			deviceSensorsTopic = '%s/Devices/%s/%s/Sensors' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
-			self.mqttClient.publish(deviceSensorsTopic,json.dumps(data))
-			print("Published to Device Sensors "+deviceSensorsTopic)
-	
-	def publishToDeviceActuators(self, data):
-		if self._configs['locationID'] == None:
-			print("locationID is required!")
-			return False
-		elif self._configs['zoneID'] == None:
-			print("zoneID is required!")
-			return False
-		elif self._configs['deviceId'] == None:
-			print("deviceId is required!")
-			return False
-		else:
-			deviceSensorsTopic = '%s/Devices/%s/%s/Actuators' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
-			self.mqttClient.publish(deviceSensorsTopic,json.dumps(data))
-			print("Published to Device Sensors "+deviceSensorsTopic)
-	
-	def publishToDeviceWarnings(self, data):
-		if self._configs['locationID'] == None:
-			print("locationID is required!")
-			return False
-		elif self._configs['zoneID'] == None:
-			print("zoneID is required!")
-			return False
-		elif self._configs['deviceId'] == None:
-			print("deviceId is required!")
-			return False
-		else:
-			deviceSensorsTopic = '%s/Devices/%s/%s/Warnings' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'])
-			self.mqttClient.publish(deviceSensorsTopic,json.dumps(data))
-			print("Published to Device Warnings "+deviceSensorsTopic)
-	
 	def publishToTassActivityRecognitionChannel(self, byteArray, userID):
 		if self._configs['locationID'] == None:
 			print("locationID is required!")
