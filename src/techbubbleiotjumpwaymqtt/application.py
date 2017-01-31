@@ -137,19 +137,19 @@ class JumpWayPythonMQTTApplicationConnection():
 			deviceStatusTopic = '%s/Applications/%s/Status' % (self._configs['locationID'], self._configs['applicationID'])
 			self.mqttClient.publish(deviceStatusTopic,data)
 			print("Published to Application Status "+deviceStatusTopic)
-	
-	def publishToDeviceChannel(self, channel, data):
+			
+	def publishToDeviceChannel(self, channel, zone, device, data):
 		if self._configs['locationID'] == None:
 			print("locationID is required!")
 			return False
-		elif self._configs['zoneID'] == None:
+		elif zone == None:
 			print("zoneID is required!")
 			return False
-		elif self._configs['deviceId'] == None:
+		elif device == None:
 			print("deviceId is required!")
 			return False
 		else:
-			deviceChannel = '%s/Devices/%s/%s/%s' % (self._configs['locationID'], self._configs['zoneID'], self._configs['deviceId'], channel)
+			deviceChannel = '%s/Devices/%s/%s/%s' % (self._configs['locationID'], zone, device, channel)
 			self.mqttClient.publish(deviceChannel,json.dumps(data))
 			print("Published to Device "+channel+" Channel")
 

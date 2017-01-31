@@ -1,6 +1,6 @@
-Metadata-Version: 3.7
+Metadata-Version: 3.9
 Name: techbubbleiotjumpwaymqtt
-Version: 0.3.7
+Version: 0.3.9
 Summary: TechBubble Technologies IoT JumpWay MQTT Client for Python
 Home-page: https://github.com/TechBubbleTechnologies/IoT-JumpWay-Python-MQTT-Clients
 Author: Adam Milton-Barker
